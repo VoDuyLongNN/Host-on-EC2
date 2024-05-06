@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+
+</head>
+<body>
+<section>
+    <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+        <h5 style="font-size: 50px">Welcome</h5>
+<!--        <button id="logoutBtn" type="button" class="btn btn-primary">Logout</button>-->
+    </div>
+
+    <script>
+        document.getElementById("logoutBtn").addEventListener("click", function(event) {
+            event.preventDefault();
+
+            fetch('/auth/logout', {
+                method: 'GET',
+                credentials: 'same-origin'
+            })
+                .then(function(response) {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error logging out:', error);
+                });
+        });
+    </script>
+</section>
+
+
+</body>
+</html>
