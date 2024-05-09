@@ -15,7 +15,7 @@
                 </li>
                 <!-- Kiểm tra xem người dùng đã đăng nhập chưa -->
                 <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                    <a id="logoutBtn" href="#" class="nav-link">Logout</a>
+                    <a id="logoutBtn" href="/auth/logout" class="nav-link">Logout</a>
                 </li>
                 <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/user/get-all">Get All User</a>

@@ -7,9 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +21,8 @@ public class AuthController {
 
     @PostMapping("/signup")
     public String signUp(@ModelAttribute ReqResponse signUpRequest, RedirectAttributes redirectAttributes) {
-        String message = authService.signUp(signUpRequest).getMessage();
+        ReqResponse response = authService.signUp(signUpRequest);
+        String message = response.getMessage();
         redirectAttributes.addFlashAttribute("alertMessageRegister", message);
         return "redirect:/public/register";
     }

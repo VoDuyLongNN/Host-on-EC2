@@ -31,7 +31,7 @@ public class AuthService {
             Optional<User> existingUser = userRepository.existsByEmail(registrationRequest.getEmail());
 
             if (existingUser.isPresent()) {
-                resp.setMessage("Email Already Exists");
+                resp.setMessage("Registration failed, email already exists");
                 resp.setStatusCode(409);
                 return resp;
             } else {

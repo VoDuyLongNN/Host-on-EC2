@@ -9,12 +9,12 @@
 <section>
     <div class="container" style="padding: 30px 300px;">
         <h1>Register</h1>
-        <div th:if="${alertMessageRegister}">
-            <script th:inline="javascript">
-                alert([[${alertMessageRegister}]]);
-            </script>
-        </div>
-        <form action="/auth/signup" method="get">
+<!--        <div th:if="${alertMessageRegister}">-->
+<!--            <script th:inline="javascript">-->
+<!--                alert([[${alertMessageRegister}]]);-->
+<!--            </script>-->
+<!--        </div>-->
+        <form action="/auth/signup" method="post">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required>
@@ -32,6 +32,9 @@
                     <option value="admin">ADMIN</option>
                     <option value="user">USER</option>
                 </select>
+            </div>
+            <div th:if="${alertMessageRegister}" class="alert alert-dark" role="alert">
+                <p th:text="${alertMessageRegister}"></p>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
 
